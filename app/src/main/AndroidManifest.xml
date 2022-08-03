@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTest">
         <activity
-            android:name=".FragmentTestActivity"
+            android:name=".RecyclerViewTestActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
