@@ -5,7 +5,9 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.30885416666666665" />
         <entry key="app/src/main/res/layout/activity_constraint_layout_test.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/activity_dialog_fragment_test.xml" value="0.12613981762917933" />
         <entry key="app/src/main/res/layout/activity_fragment_test.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_intent_test.xml" value="0.12664640324214793" />
         <entry key="app/src/main/res/layout/activity_liner_layout_test.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_navigation_test.xml" value="0.13677536231884058" />
         <entry key="app/src/main/res/layout/activity_recycler_view_test.xml" value="0.11851851851851852" />
