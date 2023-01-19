@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="false">
+        <shape>
+            <!--
+            1. Buttonの背景色を指定したRGBでXMLから指定することができるか。
+            ・可能でした。
+            -->
+            <solid android:color="#ff5f77" />
+            <!--
+            2. Buttonの枠線をを指定したRGBと太さでXMLから指定することができるか。
+            ・可能でした。
+            -->
+            <stroke android:width="4dp" android:color="#ff193c" />
+            <corners android:bottomLeftRadius="8dp"
+                android:bottomRightRadius="8dp"
+                android:topLeftRadius="8dp"
+                android:topRightRadius="8dp"/>
+        </shape>
+    </item>
+
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape>
+            <solid android:color="#5f8dff"/>
+            <stroke android:width="4dp" android:color="#195bff" />
+            <corners android:bottomLeftRadius="8dp"
+                android:bottomRightRadius="8dp"
+                android:topLeftRadius="8dp"
+                android:topRightRadius="8dp"/>
+        </shape>
+    </item>
+
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="#696969"/>
+            <corners android:bottomLeftRadius="8dp"
+                android:bottomRightRadius="8dp"
+                android:topLeftRadius="8dp"
+                android:topRightRadius="8dp"/>
+        </shape>
+    </item>
+</selector>

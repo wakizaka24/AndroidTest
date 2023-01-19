@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/style1_button_background"
+        app:backgroundTint="@null"
+        android:text="OK"
+        android:padding="0dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="23dp"
+        tools:ignore="HardcodedText" />
+
+    <!--
+    3. Buttonを制約配置(ConstraintLayout)で指定することができるか。
+    ・可能でした。
+    -->
+
+    <Button
+        android:id="@+id/ok_button_switch_button"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:background="@drawable/style1_button_background"
+        app:backgroundTint="@null"
+        android:text="切り替え"
+        android:padding="0dp"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toRightOf="@id/ok_button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="23dp"
+        tools:ignore="HardcodedText" />
+
+    <!--
+    4. Buttonを列配置(LinearLayout)で指定することができるか。
+    ・可能でした。
+    -->
+
+    <LinearLayout
+        android:id="@+id/linear_layout1"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/ok_button"
+        app:layout_constraintTop_toBottomOf="@id/ok_button_switch_button"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp">
+        <Button
+            android:id="@+id/ok_button_enable_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/style1_radius24_button_background"
+            app:backgroundTint="@null"
+            android:text="活性"
+            android:padding="0dp"
+            android:textSize="11sp"
+            tools:ignore="HardcodedText" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/ok_button_disable_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/style1_radius24_button_background"
+            app:backgroundTint="@null"
+            android:text="非活性"
+            android:padding="0dp"
+            android:textSize="11sp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
