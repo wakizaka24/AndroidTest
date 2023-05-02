@@ -7,10 +7,10 @@
     tools:context=".LinearLayoutTestActivity">
 
     <!--
-        1. LinearLayout管理下の自身のViewのサイズを指定できるか。
-        ・layout_heightの指定できる。
-        2. LinearLayout管理下でSpaceの指定ができるか。
-        ・可能でした。
+    1. LinearLayout管理下の自身のViewのサイズを指定できるか。
+    ・layout_heightの指定できる。
+    2. LinearLayout管理下でSpaceの指定ができるか。
+    ・可能でした。
     -->
 
     <LinearLayout
@@ -50,7 +50,8 @@
             android:layout_height="23dp" />
 
         <!--
-            5. LinearLayout(縦)の中でLinearLayout(横)を入れ子にできるか。
+        5. LinearLayout(縦)の中でLinearLayout(横)を入れ子にできるか。
+        ・可能でした。
         -->
 
         <LinearLayout
@@ -60,8 +61,8 @@
             >
 
             <!--
-                4. LinearLayout(縦)の中でLinearLayout(縦)を入れ子にできるか。
-                ・入れ子による影響は受けない模様です。
+            4. LinearLayout(縦)の中でLinearLayout(縦)を入れ子にできるか。
+            ・入れ子による影響は受けない模様です。
             -->
 
             <LinearLayout
@@ -83,8 +84,8 @@
                     />
 
                 <!--
-                    3. LinearLayout管理下で各Viewの比率からサイズを指定できるか。
-                    ・LinearLayout管理下のViewのlayout_weightで可能でした。
+                3. LinearLayout管理下で各Viewの比率からサイズを指定できるか。
+                ・LinearLayout管理下のViewのlayout_weightで可能でした。
                 -->
 
                 <LinearLayout
@@ -123,8 +124,8 @@
                 />
 
             <!--
-                6. LinearLayoutの中でConstraintLayoutを入れ子にできるか。
-                ・可能でした。
+            6. LinearLayoutの中でConstraintLayoutを入れ子にできるか。
+            ・可能でした。
             -->
 
             <androidx.constraintlayout.widget.ConstraintLayout

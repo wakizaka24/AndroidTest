@@ -39,13 +39,13 @@
         />
 
     <!--
-        3. 画面サイズに応じた自身外のViewのサイズを指定ができるか。
-        ・match_parentのConstraintLayoutの中の、wrap_contentの指定で、
-        自動調節可能になる。
-        4. ConstraintLayout管理下の同じ階層のViewとの距離を指定できるか。
-        ・layout_constraintLeft_toLeftOfとlayout_marginStartで可能です。
-        5. ConstraintLayoutの中でConstraintLayoutを入れ子にできるか。
-        ・可能でした。
+    3. 画面サイズに応じた自身外のViewのサイズを指定ができるか。
+    ・match_parentのConstraintLayoutの中の、wrap_contentの指定で、
+    自動調節可能になる。
+    4. ConstraintLayout管理下の同じ階層のViewとの距離を指定できるか。
+    ・layout_constraintLeft_toLeftOfとlayout_marginStartで可能です。
+    5. ConstraintLayoutの中でConstraintLayoutを入れ子にできるか。
+    ・可能でした。
 　   -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,8 +82,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--
-        6. 上下左右のセンタリングできるか。
-        ・可能でした。layout_marginも有効。
+    6. 上下左右のセンタリングできるか。
+    ・可能でした。layout_marginも有効。
     -->
 
     <View
@@ -98,10 +98,10 @@
         />
 
     <!--
-        7. マージンの比率を指定できるか。
-        ・layout_constraintHorizontal_biasで可能でした。
-        ・幅と指定する接点の間に余白がある、また、比率の複合指定ではないこと。
-        ・合わせてlayout_marginの指定もできる。
+    7. マージンの比率を指定できるか。
+    ・layout_constraintHorizontal_biasで可能でした。
+    ・幅と指定する接点の間に余白がある、また、比率の複合指定ではないこと。
+    ・合わせてlayout_marginの指定もできる。
     -->
 
     <View

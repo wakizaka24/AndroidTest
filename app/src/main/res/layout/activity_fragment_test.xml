@@ -8,13 +8,13 @@
     tools:context=".FragmentTestActivity">
 
     <!--
-        1. ActivityにFragmentで定義したXMLを組み込めるか。
-        ・可能でした。
+    1. ActivityにFragmentで定義したXMLを組み込めるか。
+    ・可能でした。
     -->
 
     <!--
-        android:name="com.example.androidtest.TestFragment"
-        でデフォルトのフラグメントを設定することができる。
+    android:name="com.example.androidtest.TestFragment"
+    でデフォルトのフラグメントを設定することができる。
     -->
 
     <androidx.fragment.app.FragmentContainerView
