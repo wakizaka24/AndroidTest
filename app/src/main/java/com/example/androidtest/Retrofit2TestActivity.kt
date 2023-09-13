@@ -19,7 +19,7 @@ class Retrofit2TestActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.gettingApiButton.stateListAnimator = null;
+        binding.gettingApiButton.stateListAnimator = null
         binding.gettingApiButton.setOnClickListener {
             retrofit2TestService.getApiAccess().getTest1Table(3)
                 .enqueue(object : Callback<Retrofit2TestService.Api2Response> {
@@ -36,8 +36,63 @@ class Retrofit2TestActivity : AppCompatActivity() {
                         call: Call<Retrofit2TestService.Api2Response>,
                         t: Throwable
                     ) {
+                        Log.d("Retrofit2TestActivity", t.message ?: "APIエラー")
                     }
                 })
+        }
+
+        binding.postingApiButton.stateListAnimator = null
+        binding.postingApiButton.setOnClickListener {
+            val body = Retrofit2TestService.Api3RequestBody(
+                values = arrayOf(
+                    Retrofit2TestService.Api3RequestTable1Value(
+                        3, "Value 33333!"
+                    )
+                ))
+            retrofit2TestService.getApiAccess().postTest1Table(body)
+                .enqueue(object : Callback<Void> {
+                    override fun onResponse(
+                        call: Call<Void>,
+                        response: Response<Void>
+                    ) {
+                        if (response.raw().code() == 200) {
+                            showMessage("データの追加に成功しました")
+                        } else {
+                            showMessage(response.errorBody()?.string() ?: "APIエラー")
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: Call<Void>,
+                        t: Throwable
+                    ) {
+                        Log.d("Retrofit2TestActivity", t.message ?: "APIエラー")
+                    }
+                })
+        }
+
+        binding.deletingApiButton.stateListAnimator = null
+        binding.deletingApiButton.setOnClickListener {
+            val body = Retrofit2TestService.Api4RequestBody(
+                keys = arrayOf(3)
+            )
+            retrofit2TestService.getApiAccess().deleteTest1Table(body)
+                .enqueue(object : Callback<Void> {
+                    override fun onResponse(
+                        call: Call<Void>,
+                        response: Response<Void>
+                    ) {
+                        showMessage("データを削除しました")
+                    }
+
+                    override fun onFailure(
+                        call: Call<Void>,
+                        t: Throwable
+                    ) {
+                        Log.d("Retrofit2TestActivity", t.message ?: "APIエラー")
+                    }
+                })
+
         }
     }
 
