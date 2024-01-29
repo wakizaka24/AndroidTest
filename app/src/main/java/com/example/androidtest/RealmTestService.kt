@@ -101,23 +101,23 @@ class RealmTestService {
         return apiInterfaceImpl
     }
 
-    class Event : RealmObject {
-        var id: String? = null
-        var title: String? = null
-        var startDate: Date? = null
-        var endDate: Date? = null
-    }
-
-    fun getEventList(id: String?): List<Event> {
-        // 領域を開く
-        val config = RealmConfiguration.create(schema = setOf(Event::class))
-        val realm: Realm = Realm.open(config)
-
-        val eventList: RealmResults<Event> = realm.query<Event>("id == $id").find()
-        return eventList.toList()
-    }
-
-    fun addEvent(event: Event) {
-        
-    }
+//    class Event : RealmObject {
+//        var id: String? = null
+//        var title: String? = null
+//        var startDate: Date? = null
+//        var endDate: Date? = null
+//    }
+//
+//    fun getEventList(id: String?): List<Event> {
+//        // 領域を開く
+//        val config = RealmConfiguration.create(schema = setOf(Event::class))
+//        val realm: Realm = Realm.open(config)
+//
+//        val eventList: RealmResults<Event> = realm.query<Event>("id == $id").find()
+//        return eventList.toList()
+//    }
+//
+//    fun addEvent(event: Event) {
+//
+//    }
 }

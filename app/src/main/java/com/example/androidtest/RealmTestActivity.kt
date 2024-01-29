@@ -55,7 +55,7 @@ class RealmTestActivity : AppCompatActivity() {
                         call: Call<Void>,
                         response: Response<Void>
                     ) {
-                        if (response.raw().code() == 200) {
+                        if (response.code() == 200) {
                             showMessage("データの追加に成功しました")
                         } else {
                             showMessage(response.errorBody()?.string() ?: "APIエラー")
@@ -94,6 +94,9 @@ class RealmTestActivity : AppCompatActivity() {
                 })
 
         }
+
+
+
     }
 
     fun showMessage(message: String) {
