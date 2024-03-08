@@ -39,45 +39,45 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/getting_api_button"
+                android:id="@+id/test_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/style3_button_background"
                 app:backgroundTint="@null"
-                android:text="GETの\nAPIアクセス"
+                android:text="テスト"
                 android:padding="8dp"
                 android:textSize="11sp"
                 tools:ignore="HardcodedText" />
 
-            <Space
-                android:layout_width="4dp"
-                android:layout_height="match_parent" />
+<!--            <Space-->
+<!--                android:layout_width="4dp"-->
+<!--                android:layout_height="match_parent" />-->
 
-            <Button
-                android:id="@+id/posting_api_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/style3_button_background"
-                app:backgroundTint="@null"
-                android:text="POSTの\nAPIアクセス"
-                android:padding="8dp"
-                android:textSize="11sp"
-                tools:ignore="HardcodedText" />
+<!--            <Button-->
+<!--                android:id="@+id/posting_api_button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/style3_button_background"-->
+<!--                app:backgroundTint="@null"-->
+<!--                android:text="POSTの\nAPIアクセス"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="11sp"-->
+<!--                tools:ignore="HardcodedText" />-->
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="4dp" />
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="4dp" />-->
 
-        <Button
-            android:id="@+id/deleting_api_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style3_button_background"
-            app:backgroundTint="@null"
-            android:text="DELETEの\nAPIアクセス"
-            android:padding="8dp"
-            android:textSize="11sp"
-            tools:ignore="HardcodedText" />
+<!--        <Button-->
+<!--            android:id="@+id/deleting_api_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/style3_button_background"-->
+<!--            app:backgroundTint="@null"-->
+<!--            android:text="DELETEの\nAPIアクセス"-->
+<!--            android:padding="8dp"-->
+<!--            android:textSize="11sp"-->
+<!--            tools:ignore="HardcodedText" />-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
