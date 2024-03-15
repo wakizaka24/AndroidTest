@@ -15,9 +15,17 @@ class RealmTestActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        /*
+        Personの追加(personId=1, エラーハンドリング含む)
+        Personの更新(personId=1, 年齢の更新21歳にする)
+        Personの削除(personId=1)
+        Personのtaskの追加(personId=1, タスクIDを最大+1)
+        Personのtaskの更新(personId=1, タスクIDの最小のレコードをfinished=trueにする)
+        Personのtaskの削除(personId=1 and finished=true)
+         */
 
 
-        RealmTestService.realm.writeBlocking {
+//        RealmTestService.realm.writeBlocking {
 //            copyToRealm(Dog().apply {
 //                dogId = 0
 //                name = "いぬ"
@@ -33,14 +41,31 @@ class RealmTestActivity : AppCompatActivity() {
 //                name = "とり"
 //                age = 2
 //            })
+//        }
+
+        val dogResult = RealmTestService.realm.query<Dog>(query = "dogId == $0", args = arrayOf(2))
+            .find()
+        var dogName = "いない"
+        if (dogResult.size > 0) {
+            dogName = dogResult.first().name
         }
 
-        val dog = RealmTestService.realm.query<Dog>(query = "dogId == $0", args = arrayOf(2))
-            .find().first()
-        val personNum = RealmTestService.realm.query<Person>()
-            .find().size
+        val personNum = RealmTestService.realm.query<Person>().find().size
+        showMessage("初期のDog: $dogName 初期のPersonの数: $personNum")
 
-        showMessage("初期のDog: ${dog.name} 初期のPersonの数: $personNum")
+//        val tasks = RealmTestService.realm.query<Dog>().find()
+//        CoroutineScope(newSingleThreadContext("RealmMonitoring")).launch {
+//            tasks.asFlow().collect {
+//                when (it) {
+//                    is InitialResults -> {
+//                        showMessage("Dog初期化件数: ${it.list.size}")
+//                    }
+//                    is UpdatedResults -> {
+//                        showMessage("Dog更新件数: ${it.list.size}")
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun showMessage(message: String) {
