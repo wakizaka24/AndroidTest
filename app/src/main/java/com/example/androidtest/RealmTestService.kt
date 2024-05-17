@@ -1,5 +1,7 @@
 package com.example.androidtest
 
+import android.text.TextUtils.concat
+import android.util.Base64
 import android.util.Log
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
@@ -8,6 +10,8 @@ import io.realm.kotlin.types.EmbeddedRealmObject
 import io.realm.kotlin.types.RealmList
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
+import java.lang.Exception
+import java.util.Arrays
 
 class Dog: RealmObject {
     @PrimaryKey
@@ -39,53 +43,63 @@ object RealmTestService {
                 return localRealm!!
             }
 
-            val config = RealmConfiguration.Builder(
-                schema = setOf(Dog::class, Person::class, Task::class))
-                // 64バイトのキーを動的に作成する必要あり
-                // キーの保存先も安全な場所に保存する必要あり
-                // .encryptionKey(Base64.decode("abc...", Base64.DEFAULT)) // 暗号化キー
-                .initialData {// DBの初期値
-                    copyToRealm(Dog().apply {
-                        dogId = 0
-                        name = "いぬ"
-                        age = 3
-                    })
-                    copyToRealm(Dog().apply {
-                        dogId = 1
-                        name = "うさぎ"
-                        age = 2
-                    })
-                    copyToRealm(Dog().apply {
-                        dogId = 2
-                        name = "とり"
-                        age = 2
-                    })
-                    copyToRealm(Person().apply {
-                        personId = 0
-                        name = "りょうたくん"
-                        age = 20
-                    })
-                    copyToRealm(Person().apply {
-                        personId = 1
-                        name = "新たなりょうたくん"
-                        age = 2
-                        tasks = realmListOf(
-                            Task().apply {
-                                taskId = 0
-                                name = "カレンダー作成"
-                                finished = false
-                            },
-                            Task().apply {
-                                taskId = 1
-                                name = "アプリ申請"
-                                finished = false
-                            }
-                        )
-                    })
-                }.build()
+            // TODO: キーの保存先を安全な場所に保存し、存在する場合はそのキーを使用する
+            // TODO: 暗号化の使用文字を元に戻す
+            //val randomCharList = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789";
+            val randomCharList = "A"
+            val key64byte: String = (1..64)
+                .map { randomCharList.random() }
+                .joinToString("");
 
-            localRealm = Realm.open(config)
-            Log.d("Realm情報", "開いたRealm ${localRealm!!.configuration.name}")
+            try {
+                val config = RealmConfiguration.Builder(
+                    schema = setOf(Dog::class, Person::class, Task::class))
+                    .encryptionKey(key64byte.toByteArray()) // 暗号化キー
+                    .initialData {// DBの初期値
+                        copyToRealm(Dog().apply {
+                            dogId = 0
+                            name = "いぬ"
+                            age = 3
+                        })
+                        copyToRealm(Dog().apply {
+                            dogId = 1
+                            name = "うさぎ"
+                            age = 2
+                        })
+                        copyToRealm(Dog().apply {
+                            dogId = 2
+                            name = "とり"
+                            age = 2
+                        })
+                        copyToRealm(Person().apply {
+                            personId = 0
+                            name = "りょうたくん"
+                            age = 20
+                        })
+                        copyToRealm(Person().apply {
+                            personId = 1
+                            name = "新たなりょうたくん"
+                            age = 2
+                            tasks = realmListOf(
+                                Task().apply {
+                                    taskId = 0
+                                    name = "カレンダー作成"
+                                    finished = false
+                                },
+                                Task().apply {
+                                    taskId = 1
+                                    name = "アプリ申請"
+                                    finished = false
+                                }
+                            )
+                        })
+                    }.build()
+
+                localRealm = Realm.open(config)
+                Log.d("Realm情報", "開いたRealm ${localRealm!!.configuration.name}")
+            } catch (e: Exception) {
+                Log.d("Realm情報", "${e.message}")
+            }
 
             return localRealm!!
         }
