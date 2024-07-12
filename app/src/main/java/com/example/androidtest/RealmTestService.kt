@@ -1,17 +1,17 @@
 package com.example.androidtest
 
-import android.text.TextUtils.concat
-import android.util.Base64
 import android.util.Log
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
+import io.realm.kotlin.dynamic.DynamicMutableRealmObject
+import io.realm.kotlin.dynamic.DynamicRealmObject
 import io.realm.kotlin.ext.realmListOf
+import io.realm.kotlin.migration.AutomaticSchemaMigration
 import io.realm.kotlin.types.EmbeddedRealmObject
 import io.realm.kotlin.types.RealmList
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
 import java.lang.Exception
-import java.util.Arrays
 
 class Dog: RealmObject {
     @PrimaryKey
@@ -34,8 +34,40 @@ class Task: EmbeddedRealmObject {
     var finished: Boolean = false
 }
 
+val migration = AutomaticSchemaMigration { context ->
+    val oldVersion = context.oldRealm.schemaVersion()
+    // val schema = context.newRealm.schema()
+
+    if (oldVersion < 2) {
+        context.enumerate(className = "Person") {
+            oldObject: DynamicRealmObject, newObject: DynamicMutableRealmObject? ->
+            newObject?.run {
+                /*
+                // カラムの型変換の例
+                set(
+                    "deviceId",
+                    oldObject.getValue<ObjectId>(fieldName = "deviceId").toString()
+                )
+                // カラムのマージの例
+                set(
+                    "fullName",
+                    "${oldObject.getValue<String>(fieldName = "firstName")}" +
+                            "${oldObject.getValue<String>(fieldName = "lastName")}"
+                )
+                // カラムのリネームの例
+                set(
+                    "yearsSinceBirth",
+                    oldObject.getValue<String>(fieldName = "age")
+                )
+                */
+            }
+        }
+    }
+}
+
 object RealmTestService {
     private var localRealm: Realm? = null
+    private var currentSchemaVersion: Long = 1
 
     val realm: Realm
         get() {
@@ -54,6 +86,9 @@ object RealmTestService {
             try {
                 val config = RealmConfiguration.Builder(
                     schema = setOf(Dog::class, Person::class, Task::class))
+                    // .deleteRealmIfMigrationNeeded() // マイグレーション不要
+                    .schemaVersion(currentSchemaVersion) // スキーマバージョン
+                    .migration(migration) // マイグレーション設定
                     .encryptionKey(key64byte.toByteArray()) // 暗号化キー
                     .initialData {// DBの初期値
                         copyToRealm(Dog().apply {
